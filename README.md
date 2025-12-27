@@ -69,7 +69,7 @@ Lightweight devices around the house will provide:
 On a Raspberry Pi 5, the following Docker containers are already deployed and in use:
 
 - **WireGuard (wg-easy)** for simplified VPN management.  
-- **Pi-hole** as DNS server and network‑wide ad blocker.  
+- **Pi-hole** as DNS server and network‑wide ad blocker (currently installed locally).  
 - **Filebrowser** for web-based file management on the homelab storage.
 
 ## Implementation Roadmap
