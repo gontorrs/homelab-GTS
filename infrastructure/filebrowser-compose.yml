@@ -1,0 +1,17 @@
+services:
+  filebrowser:
+    image: filebrowser/filebrowser:latest
+    container_name: filebrowser
+    restart: unless-stopped
+
+    #Host path example.
+    volumes:
+      - /dataPath/filebrowser:/srv
+      - ./filebrowser.db:/database.db
+
+    #Port mapping example.
+    ports:
+      - "8080:80"
+
+    #UID:GID example.
+    user: "1000:1000"

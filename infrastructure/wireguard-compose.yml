@@ -1,0 +1,30 @@
+services:
+  wg-easy:
+    image: weejewel/wg-easy
+    container_name: wg-easy
+    environment:
+      #WG_HOST is your public IP address or domain name.
+      - WG_HOST=${WG_HOST}
+
+      #Web password to acces GUI interface.
+      - PASSWORD=${WG_PASSWORD}
+
+    volumes:
+      - ~/.wg-easy:/etc/wireguard
+
+    #Port mapping example.
+    ports:
+      - "51820:51820/udp"
+      - "51821:51821/tcp"
+    #To manage network interfaces and modules.
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    #For routing and forwarding (accesing network through the VPN).
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+      - net.ipv4.ip_forward=1
+      
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
